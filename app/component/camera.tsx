@@ -24,7 +24,7 @@ const App = () => {
       {isCameraOn ? (
         <Webcam ref={webcamRef} />
       ) : (
-        <p>Camera is turned off</p>
+        <p >Camera is turned off</p>
       )}
       <div>
         <button className='button-33' onClick={toggleCamera}>
