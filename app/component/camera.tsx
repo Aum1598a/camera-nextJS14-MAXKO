@@ -18,9 +18,17 @@ const App = () => {
     setIsCameraOn((prevIsCameraOn) => !prevIsCameraOn);
   };
 
+  const capture = () => {
+    const imageSrc = webcamRef.current?.getScreenshot();
+    console.log(imageSrc);
+    // You can do something with the captured image here.
+  };
+
+
   return (
     <div>
       <h1>react-webcam</h1>
+
       {isCameraOn ? (
         <Webcam ref={webcamRef} />
       ) : (
