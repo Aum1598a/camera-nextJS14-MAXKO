@@ -9,7 +9,6 @@ import Link from 'next/link';
 export default function Home() {
 
   const [textUrl, setText] = useState([])
-  console.log(textUrl);
 
   return (
     <div>
