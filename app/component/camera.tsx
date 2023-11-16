@@ -133,11 +133,12 @@ export const Camera = ({ onValueCamera }: any) => {
             </div>
           ) : isCameraOn ? (
             <div className='relative'>
-              <div className='flex justify-center items-center'>
+              <div className='flex justify-center items-center max-h-[512px]'>
                 <Webcam
                   ref={webcamRef}
                   videoConstraints={videoConstraints}
                   height={'100%'}
+
                   screenshotFormat="image/jpeg"
                   width={'100%'}
                 />
