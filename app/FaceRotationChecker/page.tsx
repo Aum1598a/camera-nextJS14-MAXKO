@@ -1,3 +1,4 @@
+'use client'
 import { Orientation } from "./component/orientation";
 
 const Page = () => {
