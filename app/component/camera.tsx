@@ -30,30 +30,30 @@ export const Camera = ({ onValueCamera }: any) => {
   };
 
 
-  const handleOrientationChange = () => {
-    setOrientation(getOrientation());
-  };
+  // const handleOrientationChange = () => {
+  //   setOrientation(getOrientation());
+  // };
 
-  function getOrientation() {
-    if (typeof window !== 'undefined') {
-      let angle = window.screen.orientation.angle
-      if (angle === 0 || angle === 180) {
-        return 0;
-      } else {
-        return 90;
-      }
-    } else {
-      return 0
-    }
-  }
-  useEffect(() => {
-    handleOrientationChange()
-    window.addEventListener('orientationchange', handleOrientationChange);
+  // function getOrientation() {
+  //   if (typeof window !== 'undefined') {
+  //     let angle = window.screen.orientation.angle
+  //     if (angle === 0 || angle === 180) {
+  //       return 0;
+  //     } else {
+  //       return 90;
+  //     }
+  //   } else {
+  //     return 0
+  //   }
+  // }
+  // useEffect(() => {
+  //   handleOrientationChange()
+  //   window.addEventListener('orientationchange', handleOrientationChange);
 
-    return () => {
-      window.removeEventListener('orientationchange', handleOrientationChange);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('orientationchange', handleOrientationChange);
+  //   };
+  // }, []);
 
 
   const resizeImage = (base64Image: string) => {
