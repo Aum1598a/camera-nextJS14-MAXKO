@@ -30,11 +30,11 @@ export default function Home() {
         )
       }) : <span className='w-32 h-32 border rounded border-dashed flex justify-center items-center'> <ImagePlus className='h-16 w-16' color='gray' strokeWidth={1} /></span>}
 
-      {/* <Link href='/FaceRotationChecker'>
+      <Link href='/FaceRotationChecker'>
       <Button>
         Rotation Checker
       </Button>
-    </Link> */}
+    </Link>
     </div>
   )
 }

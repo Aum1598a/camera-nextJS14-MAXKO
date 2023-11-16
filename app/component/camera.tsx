@@ -31,10 +31,23 @@ export const Camera = ({ onValueCamera }: any) => {
 
 
   const handleOrientationChange = () => {
-    setOrientation((window.screen as any).orientation?.angle || 0);
+    setOrientation(getOrientation());
   };
 
+  function getOrientation() {
+    if (typeof window !== 'undefined') {
+      let angle = window.screen.orientation.angle
+      if (angle === 0 || angle === 180) {
+        return 0;
+      } else {
+        return 90;
+      }
+    } else {
+      return 0
+    }
+  }
   useEffect(() => {
+    handleOrientationChange()
     window.addEventListener('orientationchange', handleOrientationChange);
 
     return () => {
@@ -133,12 +146,11 @@ export const Camera = ({ onValueCamera }: any) => {
             </div>
           ) : isCameraOn ? (
             <div className='relative'>
-              <div className='flex justify-center items-center max-h-[512px]'>
+              <div className='flex justify-center items-center max-h-screen h-full'>
                 <Webcam
                   ref={webcamRef}
                   videoConstraints={videoConstraints}
                   height={'100%'}
-
                   screenshotFormat="image/jpeg"
                   width={'100%'}
                 />
@@ -148,7 +160,7 @@ export const Camera = ({ onValueCamera }: any) => {
                 <div className={`absolute inset-x-0 bottom-0 bg-white p-4`}
                   style={{ backgroundColor: '#ffffff11' }}
 
-                >
+                >{orientation}
                   <div className='flex justify-center space-x-4 mt-4'>
                     {screenshotArr.length ? screenshotArr.map((row: { id: number, img: string, size: number }) => {
                       return (
@@ -185,20 +197,21 @@ export const Camera = ({ onValueCamera }: any) => {
                     </Button>
                   </div>
 
-                  <AlertDialogFooter className='items-end'>
+                  <AlertDialogFooter className='items-end mb-10'>
                     <Button onClick={() => setOpen(false)} type="button" className=' bg-red-500'>Cancel</Button>
-                    <Button onClick={() => hendelUpload()} type="button" className=' bg-blue-500'>uplode</Button>
+                    <Button onClick={() => hendelUpload()} type="button" className=' bg-blue-500'>Uplode</Button>
                   </AlertDialogFooter>
                 </div>}
               {orientation === 90 &&
                 <div className={`absolute inset-y-0 right-0 flex bg-white p-4`}
                   style={{ backgroundColor: '#ffffff11' }}
-                >
+                >{orientation}
                   <div className='inline-flex justify-center space-x-4 items-center'>
                     <div className='space-y-4'>
                       {screenshotArr.length ? screenshotArr.map((row: { id: number, img: string }) => {
                         return (
                           <div key={row.id} className='relative'>
+
                             <Button
                               size='icon'
                               variant='ghost'
@@ -226,12 +239,13 @@ export const Camera = ({ onValueCamera }: any) => {
                       variant='ghost'
                       type='button'
                       onClick={handleCapture}
+                      // className='w-16 h-16' 
                     >
                       <Aperture className='w-20 h-20' />
                     </Button>
                   </div>
 
-                  <div className='flex items-end '>
+                  <div className='flex items-end mb-10 mr-4'>
                     <div className='space-y-4'>
                       <div>
                         <Button onClick={() => hendelUpload()} type="button" className=' bg-blue-500'>Upload</Button>

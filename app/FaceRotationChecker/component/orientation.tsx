@@ -9,6 +9,7 @@ export const Orientation = () => {
     };
 
     useEffect(() => {
+        handleOrientationChange()
         window.addEventListener('orientationchange', handleOrientationChange);
 
         return () => {
@@ -16,15 +17,30 @@ export const Orientation = () => {
         };
     }, []);
 
-    function getOrientation() {
-        const angle =0// window.orientation || (window.screen as any).orientation?.angle || 0;
 
-        if (angle === 0 || angle === 180) {
-            return 'portrait';
-        } else {
-            return 'landscape';
+
+    function getOrientation() {
+        if (typeof window !== 'undefined') {
+             let angle = window.screen.orientation.angle
+            if (angle === 0 || angle === 180) {
+                return 'portrait';
+            } else {
+                return 'landscape';
+            }
+        }else{
+            return null
         }
     }
+
+
+    // const handleOrientationChange = () => {
+    //     console.log(window.innerWidth);
+    //     if (typeof window !== 'undefined') {
+    //         if (window.innerWidth > window.innerHeight) {
+    //         }
+    //     }
+
+    // }
 
     return (
         <div>
