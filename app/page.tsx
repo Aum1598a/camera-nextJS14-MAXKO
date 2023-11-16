@@ -3,6 +3,8 @@ import Image from 'next/image'
 import React, { useState } from 'react';
 import { ImagePlus } from 'lucide-react'
 import { Camera } from './component/camera';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function Home() {
 
@@ -28,7 +30,11 @@ export default function Home() {
         )
       }) : <span className='w-32 h-32 border rounded border-dashed flex justify-center items-center'> <ImagePlus className='h-16 w-16' color='gray' strokeWidth={1} /></span>}
 
-
+      {/* <Link href='/FaceRotationChecker'>
+      <Button>
+        Rotation Checker
+      </Button>
+    </Link> */}
     </div>
   )
 }
